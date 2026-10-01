@@ -35,6 +35,7 @@ export default function Header() {
   const searchInputRef = useRef<HTMLInputElement>(null);
   const ddTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const navRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
   const prevPathnameRef = useRef(pathname);
 
   // Derive search results directly
@@ -108,9 +109,13 @@ export default function Header() {
   }, []);
 
   const handleMenuToggle = () => {
-    setOpenMenu(!openMenu);
-    if (!openMenu) {
+    const nextOpen = !openMenu;
+    setOpenMenu(nextOpen);
+    if (nextOpen) {
       document.body.classList.add('lock');
+      if (navRef.current && headerRef.current) {
+        navRef.current.style.top = Math.max(0, headerRef.current.getBoundingClientRect().bottom) + 'px';
+      }
     } else {
       document.body.classList.remove('lock');
     }
@@ -160,7 +165,7 @@ export default function Header() {
         </div>
       </div>
 
-      <header className={`header ${scrolled ? 'scrolled' : ''}`} id="header">
+      <header ref={headerRef} className={`header ${scrolled ? 'scrolled' : ''}`} id="header">
         <div className="bar">
           <Link className="logo" href="/" aria-label="DateiWerk – zur Startseite">
             <svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true">
