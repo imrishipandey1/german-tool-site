@@ -347,6 +347,28 @@ section.c{padding:clamp(40px,6vw,72px) 0 0}
 .c h2{margin:0 0 14px;font-size:clamp(1.4rem,3vw,1.875rem);letter-spacing:-.02em;line-height:1.2}
 .c p{color:#334155;margin:0 0 14px}
 
+
+.steps{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:18px;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:40px 1fr;gap:14px}
+.steps li::before{content:counter(s);width:40px;height:40px;border-radius:50%;background:var(--primary);color:#fff;display:grid;place-items:center;font-weight:700}
+.steps b{display:block}.steps span{color:var(--muted)}
+.cmp{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:.9375rem}
+.cmp th,.cmp td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+.cmp thead th{background:var(--drop);font-weight:700}
+.cmp tr:last-child td{border-bottom:0}
+.cmp td:first-child{font-weight:600;white-space:nowrap}
+.scroll{overflow-x:auto}
+.faq{border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:18px 40px 18px 0;font-weight:600;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:6px;top:50%;width:10px;height:10px;border-right:2.5px solid var(--muted);border-bottom:2.5px solid var(--muted);transform:translateY(-70%) rotate(45deg);transition:transform .2s}
+.faq details[open] summary::after{transform:translateY(-30%) rotate(-135deg)}
+.faq p{margin:0 0 18px;color:var(--muted)}
+.rel{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.rel a{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;background:#fff;border:1px solid var(--line);border-radius:14px;font-weight:600;transition:border-color .2s}
+.rel a:hover{border-color:var(--drop-b);color:var(--primary)}
+
 @media(min-width:640px){
   .opts{grid-template-columns:1fr 1fr;gap:28px}
   .tool-bar{grid-template-columns:auto 1fr;align-items:center}
