@@ -1,5 +1,6 @@
 "use client";
-import React, { useState, useRef, useEffect, } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import JSZip from 'jszip';
 
 type FileItem = {
   id: number;
@@ -18,6 +19,11 @@ export default function ImageConverter() {
   const [customBg, setCustomBg] = useState('#1d4ed8');
   const [useCustomBg, setUseCustomBg] = useState(false);
   const [quality, setQuality] = useState(90);
+  
+  // Advanced options state
+  const [nameRule, setNameRule] = useState('standard');
+  const [customName, setCustomName] = useState('bild');
+  
   const uidRef = useRef(0);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -29,10 +35,23 @@ export default function ImageConverter() {
 
   const addFiles = (files: FileList | null) => {
     if (!files) return;
+    let filesArray = Array.from(files);
+    let limitMsg = '';
+    
+    if (items.length + filesArray.length > 50) {
+      const allowed = 50 - items.length;
+      if (allowed <= 0) {
+        setMsg('Maximal 50 Bilder gleichzeitig erlaubt.');
+        return;
+      }
+      filesArray = filesArray.slice(0, allowed);
+      limitMsg = ' (Maximal 50 Bilder erlaubt. Restliche wurden ignoriert)';
+    }
+
     const bad: string[] = [];
     let added = 0;
     const newItems: FileItem[] = [];
-    Array.from(files).forEach((f) => {
+    filesArray.forEach((f) => {
       if (f.type !== 'image/png' && !/\.png$/i.test(f.name)) {
         bad.push(f.name);
         return;
@@ -43,9 +62,9 @@ export default function ImageConverter() {
     });
     if (bad.length > 0) {
       const bStr = bad.slice(0, 3).join(', ') + (bad.length > 3 ? ' und ' + (bad.length - 3) + ' weitere' : '');
-      setMsg('Übersprungen (nur PNG-Dateien): ' + bStr);
+      setMsg('Übersprungen (nur PNG-Dateien): ' + bStr + limitMsg);
     } else {
-      setMsg('');
+      setMsg(limitMsg ? 'Maximal 50 Bilder gleichzeitig erlaubt. Überzählige Dateien wurden ignoriert.' : '');
     }
     if (added > 0) {
       setItems((prev) => [...prev, ...newItems]);
@@ -120,7 +139,6 @@ export default function ImageConverter() {
     setBusy(true);
     const todoIds = items.filter((i) => i.status !== 'done').map((i) => i.id);
     
-    // Mark them as busy
     setItems((prev) => prev.map((i) => (todoIds.includes(i.id) ? { ...i, status: 'busy' } : i)));
 
     for (const id of todoIds) {
@@ -143,17 +161,63 @@ export default function ImageConverter() {
     setBusy(false);
   };
 
-  const dlAll = () => {
-    items.forEach((it, i) => {
-      if (it.status === 'done' && it.out) {
-        setTimeout(() => {
-          const a = document.createElement('a');
-          a.href = it.out!.url;
-          a.download = it.file.name.replace(/\.png$/i, '') + '.jpg';
-          a.click();
-        }, i * 300);
+  const getOutName = (orig: string, idx: number, total: number) => {
+    const base = orig.replace(/\.png$/i, '');
+    let res = base;
+    if (nameRule === 'lowercase') {
+      res = base.toLowerCase();
+    } else if (nameRule === 'slug') {
+      res = base.toLowerCase().replace(/[^a-z0-9äöüß]+/gi, '-').replace(/(^-|-$)/g, '');
+    } else if (nameRule === 'underscore') {
+      res = base.toLowerCase().replace(/[^a-z0-9äöüß]+/gi, '_').replace(/(^_|_$)/g, '');
+    } else if (nameRule === 'custom') {
+      res = customName.trim() || 'bild';
+      if (total > 1) {
+        res += `-${idx + 1}`;
       }
-    });
+    }
+    return res + '.jpg';
+  };
+
+  const dlAll = async () => {
+    const done = items.filter((i) => i.status === 'done' && i.out);
+    if (done.length === 0) return;
+    
+    if (done.length === 1) {
+      const it = done[0];
+      const a = document.createElement('a');
+      a.href = it.out!.url;
+      a.download = getOutName(it.file.name, 0, 1);
+      a.click();
+    } else {
+      setMsg('ZIP-Datei wird erstellt …');
+      try {
+        const zip = new JSZip();
+        // keep track of names to prevent duplicates in ZIP
+        const usedNames = new Set<string>();
+        
+        done.forEach((it, i) => {
+          let name = getOutName(it.file.name, i, done.length);
+          // ensure unique names in zip
+          if (usedNames.has(name)) {
+             const parts = name.split('.jpg');
+             name = `${parts[0]}-${i+1}.jpg`;
+          }
+          usedNames.add(name);
+          zip.file(name, it.out!.blob);
+        });
+        const zipBlob = await zip.generateAsync({ type: 'blob' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(zipBlob);
+        a.download = 'DateiWerk-Bilder.zip';
+        a.click();
+        
+        setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+        setMsg('');
+      } catch {
+        setMsg('Fehler beim Erstellen der ZIP-Datei.');
+      }
+    }
   };
 
   // formatting
@@ -217,15 +281,54 @@ export default function ImageConverter() {
               <input type="range" id="q" min="50" max="100" step="5" value={quality} aria-label="JPG-Qualität" onChange={(e) => { setQuality(+e.target.value); resetResults(); }} />
               <output id="qv" htmlFor="q" className="tn">{quality} %</output>
             </div>
+            {doneItems.length > 0 && !pendingItems.length && (
+              <div style={{ marginTop: '12px', padding: '10px 12px', background: 'var(--success-bg)', color: 'var(--success)', borderRadius: '8px', fontSize: '0.875rem', fontWeight: 600 }}>
+                Ergebnis: {fmt(sumIn)} → {fmt(sumOut)} {p > 0 && `(−${p} %)`}
+              </div>
+            )}
           </div>
         </div>
+
+        <details className="adv" style={{ marginTop: '20px', borderTop: '1px solid var(--line)', paddingTop: '16px' }}>
+          <summary style={{ fontWeight: 600, cursor: 'pointer', outline: 'none', color: 'var(--muted)' }}>Erweiterte Optionen (Dateiname)</summary>
+          <div style={{ marginTop: '14px', display: 'flex', flexWrap: 'wrap', gap: '14px' }}>
+            <div style={{ flex: '1 1 200px' }}>
+              <label style={{ display: 'block', fontSize: '0.875rem', color: 'var(--muted)', marginBottom: '6px' }}>Namensregel</label>
+              <select 
+                style={{ width: '100%', padding: '10px 12px', borderRadius: '10px', border: '1px solid var(--line)', background: '#fff', fontSize: '0.9375rem', color: 'var(--text)' }}
+                value={nameRule} 
+                onChange={(e) => { setNameRule(e.target.value); }}
+              >
+                <option value="standard">Standard (wie Original)</option>
+                <option value="lowercase">Kleinbuchstaben (mein foto.jpg)</option>
+                <option value="slug">URL-freundlich (mein-foto.jpg)</option>
+                <option value="underscore">Unterstriche (mein_foto.jpg)</option>
+                <option value="custom">Manueller Name ...</option>
+              </select>
+            </div>
+            {nameRule === 'custom' && (
+              <div style={{ flex: '1 1 200px' }}>
+                <label style={{ display: 'block', fontSize: '0.875rem', color: 'var(--muted)', marginBottom: '6px' }}>Eigener Dateiname</label>
+                <input 
+                  type="text" 
+                  value={customName} 
+                  onChange={(e) => setCustomName(e.target.value)}
+                  placeholder="z. B. urlaubsbild"
+                  style={{ width: '100%', padding: '10px 12px', borderRadius: '10px', border: '1px solid var(--line)', background: '#fff', fontSize: '0.9375rem', color: 'var(--text)' }}
+                />
+              </div>
+            )}
+          </div>
+        </details>
 
         <ul className="list" id="list" aria-live="polite">
           {items.map((it) => (
             <li key={it.id} className={`row ${it.status === 'done' ? 'done' : ''} ${it.status === 'error' ? 'fail' : ''}`}>
               <div className="thumb"><img src={it.url} alt="" /></div>
               <div style={{ minWidth: 0 }}>
-                <div className="name">{it.file.name}</div>
+                <div className="name">
+                  {it.status === 'done' ? getOutName(it.file.name, doneItems.findIndex(d => d.id === it.id), doneItems.length) : it.file.name}
+                </div>
                 <div className="meta">
                   <span className="tn">{fmt(it.file.size)}</span>
                   {it.status === 'busy' && <><span className="spin" aria-hidden="true"></span><span>Wird umgewandelt …</span></>}
@@ -244,7 +347,7 @@ export default function ImageConverter() {
               </div>
               <div className="act">
                 {it.status === 'done' && it.out && (
-                  <a className="dl" href={it.out.url} download={it.file.name.replace(/\.png$/i, '') + '.jpg'}>
+                  <a className="dl" href={it.out.url} download={getOutName(it.file.name, doneItems.findIndex(d => d.id === it.id), doneItems.length)}>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 4v11m-5-4 5 5 5-5M5 20h14"/></svg>
                     <span>Herunterladen</span>
                   </a>
@@ -257,18 +360,11 @@ export default function ImageConverter() {
           ))}
         </ul>
 
-        {doneItems.length > 0 && !pendingItems.length && (
-          <div className="sum tn" id="sum">
-            {doneItems.length} {doneItems.length > 1 ? 'Bilder' : 'Bild'} umgewandelt · {fmt(sumIn)} → {fmt(sumOut)}
-            {p > 0 && ` (−${p} %)`}
-          </div>
-        )}
-
         <div className="tool-bar">
           <button className="btn s" type="button" onClick={removeAll}>Alle entfernen</button>
           <div className="grow">
             {doneItems.length > 1 && (
-              <button className="btn s" type="button" onClick={dlAll}>Alle herunterladen</button>
+              <button className="btn s" type="button" onClick={dlAll}>Als ZIP herunterladen</button>
             )}
             <button className="btn p" type="button" onClick={handleConvert} disabled={busy || pendingItems.length === 0}>
               {busy ? 'Wird umgewandelt …' : `In ${items.length > 1 ? 'JPGs' : 'JPG'} umwandeln`}

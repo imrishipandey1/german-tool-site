@@ -49,10 +49,8 @@ export default function Home() {
               <header><span className="ic i-img"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="1.8" fill="currentColor"/><path d="m4 18 5-5 3 3 3-3 5 5"/></svg></span><h3>Bilder</h3></header>
               <p>Verkleinern, umwandeln und zuschneiden.</p>
               <ul>
-                <li data-status="soon"><span>Bilder komprimieren</span><span className="tag">Bald verfügbar</span></li>
-                <li data-status="soon"><span>Bild konvertieren</span><span className="tag">Bald verfügbar</span></li>
-                <li data-status="soon"><span>HEIC in JPG</span><span className="tag">Bald verfügbar</span></li>
-                <li data-status="soon"><span>Bildgröße ändern</span><span className="tag">Bald verfügbar</span></li>
+                <li data-status="live"><Link href="/png-in-jpg">PNG in JPG</Link><span className="tag live">Neu</span></li>
+                <li data-status="live"><Link href="/heic-in-jpg">HEIC in JPG</Link><span className="tag live">Neu</span></li>
               </ul>
             </article>
             <article className="cat">
