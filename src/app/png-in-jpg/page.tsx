@@ -40,7 +40,7 @@ export default async function PngInJpgPage() {
         Ihre Bilder werden nicht hochgeladen. Die Umwandlung läuft auf Ihrem Gerät.
       </p>
 
-      <div className="ad" aria-label="Anzeige">Anzeige (Platzhalter mit fester Höhe)</div>
+      
 
       <div 
         className="tool-content" 

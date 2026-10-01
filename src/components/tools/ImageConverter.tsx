@@ -201,13 +201,13 @@ export default function ImageConverter() {
                 <input type="radio" name="bg" value="#000000" checked={!useCustomBg && bg === '#000000'} onChange={() => { setUseCustomBg(false); setBg('#000000'); resetResults(); }} />
                 <span><i className="dot" style={{ background: '#000' }}></i>Schwarz</span>
               </label>
-              <label className="sw">
-                <input type="radio" name="bg" value="custom" checked={useCustomBg} onChange={() => { setUseCustomBg(true); resetResults(); }} />
+              <div className="sw" onClick={() => { setUseCustomBg(true); resetResults(); }} style={{ cursor: 'pointer' }}>
+                <input type="radio" name="bg" value="custom" checked={useCustomBg} readOnly style={{ pointerEvents: 'none' }} />
                 <span>
-                  <input type="color" id="cc" value={customBg} aria-label="Eigene Farbe wählen" onChange={(e) => { setUseCustomBg(true); setCustomBg(e.target.value); resetResults(); }} />
-                  Eigene
+                  <input type="color" id="cc" value={customBg} aria-label="Eigene Farbe wählen" onClick={(e) => { e.stopPropagation(); setUseCustomBg(true); }} onChange={(e) => { setUseCustomBg(true); setCustomBg(e.target.value); resetResults(); }} />
+                  Farbe wählen
                 </span>
-              </label>
+              </div>
             </div>
           </div>
           <div className="opt">
