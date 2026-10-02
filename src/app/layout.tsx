@@ -28,6 +28,7 @@ export default function RootLayout({
   return (
     <html
       lang="de"
+      data-scroll-behavior="smooth"
       className={`${inter.variable} ${plusJakartaSans.variable} antialiased`}
     >
       <body>

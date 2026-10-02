@@ -51,6 +51,8 @@ export default function Home() {
               <ul>
                 <li data-status="live"><Link href="/png-in-jpg">PNG in JPG</Link><span className="tag live">Neu</span></li>
                 <li data-status="live"><Link href="/heic-in-jpg">HEIC in JPG</Link><span className="tag live">Neu</span></li>
+                <li data-status="live"><Link href="/webp-in-jpg">WebP in JPG</Link><span className="tag live">Neu</span></li>
+                <li data-status="live"><Link href="/jpg-in-png">JPG in PNG</Link><span className="tag live">Neu</span></li>
               </ul>
             </article>
             <article className="cat">
