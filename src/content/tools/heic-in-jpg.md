@@ -4,7 +4,7 @@ description: "HEIC in JPG umwandeln – kostenlos und ohne Upload. iPhone-Fotos 
 slug: "heic-in-jpg"
 date: "2026-10-02"
 h1: "HEIC in JPG umwandeln"
-subtitle: "Der kostenlose HEIC to JPG Converter für Ihre iPhone-Fotos. Direkt im Browser, ohne Upload und ohne Anmeldung."
+subtitle: "Der kostenlose HEIC-zu-JPG-Converter für Ihre iPhone-Fotos. Direkt im Browser, ohne Upload und ohne Anmeldung."
 ---
 
 <section class="c">
@@ -17,9 +17,9 @@ subtitle: "Der kostenlose HEIC to JPG Converter für Ihre iPhone-Fotos. Direkt i
 </div>
 
 <h2>Was ist eine HEIC-Datei?</h2>
-<p class="txt">HEIC ist das Standardformat für Fotos auf dem iPhone. Es speichert Bilder bei gleicher Qualität platzsparender als JPG. Viele Programme unter Windows, ältere Geräte und Webseiten können HEIC aber nicht öffnen oder hochladen. JPG funktioniert dagegen fast überall.</p>
+<p class="txt">HEIC ist das Standardformat für Fotos auf dem iPhone. HEIC kann Bilder bei vergleichbarer Bildqualität platzsparender als JPG speichern. Viele Programme unter Windows, ältere Geräte und Webseiten können HEIC aber nicht öffnen oder hochladen. JPG wird von den meisten Geräten, Programmen und Websites unterstützt.</p>
 <div class="vs">
-  <div class="cd good"><h3>Vorteile von JPG</h3><ul><li>Wird von nahezu jedem Gerät und Programm geöffnet</li><li>Akzeptiert von allen Upload-Formularen</li><li>Einfach per E-Mail und Messenger zu teilen</li></ul></div>
+  <div class="cd good"><h3>Vorteile von JPG</h3><ul><li>Wird von nahezu jedem Gerät und Programm geöffnet</li><li>Von vielen Upload-Formularen akzeptiert</li><li>Einfach per E-Mail und Messenger zu teilen</li></ul></div>
   <div class="cd bad"><h3>Worauf Sie achten sollten</h3><ul><li>JPG-Dateien sind meist größer als HEIC</li><li>Live-Photos werden zu einem Standbild</li><li>Die Umwandlung ist nicht umkehrbar, behalten Sie das Original</li></ul></div>
 </div>
 
@@ -29,7 +29,7 @@ subtitle: "Der kostenlose HEIC to JPG Converter für Ihre iPhone-Fotos. Direkt i
   <details><summary>Ist das Umwandeln von HEIC in JPG kostenlos?</summary><p>Ja. Sie brauchen weder ein Konto noch eine Installation, und die Fotos erhalten kein Wasserzeichen.</p></details>
   <details><summary>Werden meine Fotos hochgeladen?</summary><p>Nein. Die Umwandlung läuft direkt in Ihrem Browser. Ihre Fotos verlassen Ihr Gerät nicht.</p></details>
   <details><summary>Was ist der Unterschied zwischen JPG und JPEG?</summary><p>Es ist dasselbe Format. Nur die Endung unterscheidet sich. Wählen Sie die Variante, die Ihr Programm oder Formular verlangt.</p></details>
-  <details><summary>Warum kann ich HEIC-Dateien nicht öffnen?</summary><p>Viele Windows-Programme und ältere Geräte unterstützen HEIC nicht von Haus aus. Mit der Umwandlung in JPG lassen sich die Fotos überall öffnen.</p></details>
+  <details><summary>Warum kann ich HEIC-Dateien nicht öffnen?</summary><p>Viele Windows-Programme und ältere Geräte unterstützen HEIC nicht von Haus aus. Mit der Umwandlung in JPG lassen sich die Fotos auf deutlich mehr Geräten, Programmen und Websites verwenden.</p></details>
   <details><summary>Wie speichert mein iPhone Fotos direkt als JPG?</summary><p>Öffnen Sie auf dem iPhone Einstellungen, dann Kamera und Formate, und wählen Sie „Maximale Kompatibilität“. Neue Fotos werden dann als JPG gespeichert.</p></details>
 </div>
 

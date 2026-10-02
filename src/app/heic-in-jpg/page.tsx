@@ -46,6 +46,10 @@ export default async function HeicInJpgPage() {
                   <span className="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="7" width="14" height="12" rx="2"/><path d="M7 3h14v12"/></svg></span>
                   <div><b>Mehrere Fotos auf einmal</b><span>Wählen Sie ganze Serien aus und laden Sie jedes Ergebnis einzeln.</span></div>
                 </li>
+                <li>
+                  <span className="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></span>
+                  <div><b>JPG oder JPEG wählen</b><span>Laden Sie Ihre konvertierten Bilder wahlweise als JPG oder JPEG herunter – beide Formate sind technisch identisch.</span></div>
+                </li>
               </ul>
             </div>
 
