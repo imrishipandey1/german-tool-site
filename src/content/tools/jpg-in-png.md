@@ -81,9 +81,8 @@ subtitle: "Konvertieren Sie JPG-Bilder direkt im Browser in PNG-Dateien. Kostenl
 <section class="content narrow">
   <h2>Weitere Bildwerkzeuge</h2>
   <ul class="related">
-    <li><a href="/webp-in-jpg">WebP in JPG <span aria-hidden="true">→</span></a></li>
     <li><a href="/png-in-jpg">PNG in JPG <span aria-hidden="true">→</span></a></li>
-    <li><a href="/bilder-komprimieren">Bilder komprimieren <span aria-hidden="true">→</span></a></li>
-    <li><a href="/bildgroesse-aendern">Bildgröße ändern <span aria-hidden="true">→</span></a></li>
+    <li><a href="/heic-in-jpg">HEIC in JPG <span aria-hidden="true">→</span></a></li>
+    <li><a href="/webp-in-jpg">WebP in JPG <span aria-hidden="true">→</span></a></li>
   </ul>
 </section>

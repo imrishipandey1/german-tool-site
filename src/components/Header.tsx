@@ -4,24 +4,9 @@ import Link from 'next/link';
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { usePathname } from 'next/navigation';
 
-const TOOLS = [
-  { t: 'Bilder komprimieren', h: '/bilder-komprimieren', g: 'Bilder' },
-  { t: 'Bild konvertieren', h: '/bild-konvertieren', g: 'Bilder' },
-  { t: 'HEIC in JPG', h: '/heic-in-jpg', g: 'Bilder' },
-  { t: 'Bildgröße ändern', h: '/bildgroesse-aendern', g: 'Bilder' },
-  { t: 'Bild zuschneiden', h: '/bild-zuschneiden', g: 'Bilder' },
-  { t: 'Bild drehen', h: '/bild-drehen', g: 'Bilder' },
-  { t: 'PDF komprimieren', h: '/pdf-komprimieren', g: 'PDF' },
-  { t: 'PDF zusammenfügen', h: '/pdf-zusammenfuegen', g: 'PDF' },
-  { t: 'PDF teilen', h: '/pdf-teilen', g: 'PDF' },
-  { t: 'PDF in JPG', h: '/pdf-in-jpg', g: 'PDF' },
-  { t: 'JPG in PDF', h: '/jpg-in-pdf', g: 'PDF' },
-  { t: 'PDF drehen', h: '/pdf-drehen', g: 'PDF' },
-  { t: 'QR-Code erstellen', h: '/qr-code-erstellen', g: 'Sonstiges' },
-  { t: 'Passfoto zuschneiden', h: '/passfoto-groesse', g: 'Sonstiges' },
-  { t: 'Base64-Konverter', h: '/base64-konverter', g: 'Sonstiges' },
-  { t: 'Dateigröße-Rechner', h: '/dateigroesse-rechner', g: 'Sonstiges' }
-];
+import { liveTools } from '@/lib/config/tools';
+
+const TOOLS = liveTools.map(t => ({ t: t.name, h: '/' + t.slug, g: t.category === 'bilder' ? 'Bilder' : t.category }));
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -185,44 +170,14 @@ export default function Header() {
                   <svg className="chev" width="16" height="16"><use href="#s-chev"/></svg>
                 </button>
                 <div className={`dd ${openDD === 'bilder' ? 'show' : ''}`} id="dd-bilder">
-                  <Link className="t" href="/bilder-komprimieren">Bilder komprimieren<small>JPG, PNG und WebP verkleinern</small></Link>
-                  <Link className="t" href="/bild-konvertieren">Bild konvertieren<small>Zwischen JPG, PNG und WebP wechseln</small></Link>
-                  <Link className="t" href="/heic-in-jpg">HEIC in JPG<small>iPhone-Fotos umwandeln</small></Link>
-                  <Link className="t" href="/bildgroesse-aendern">Bildgröße ändern<small>Breite und Höhe anpassen</small></Link>
-                  <Link className="t" href="/bild-zuschneiden">Bild zuschneiden<small>Ausschnitt frei wählen</small></Link>
-                  <Link className="t" href="/bild-drehen">Bild drehen<small>Drehen und spiegeln</small></Link>
-                  <Link className="all" href="/bilder">Alle Bild-Werkzeuge</Link>
+                  {liveTools.map(t => (
+                    <Link key={t.slug} className="t" href={'/' + t.slug}>{t.name}<small>Kostenlos & schnell</small></Link>
+                  ))}
                 </div>
               </li>
-              <li onMouseEnter={() => handleDDEnter('pdf')} onMouseLeave={handleDDLeave}>
-                <button className="nav-btn" aria-expanded={openDD === 'pdf'} aria-controls="dd-pdf" onClick={(e) => handleDDToggle('pdf', e)}>
-                  <span className="ico i-pdf"><svg width="16" height="16"><use href="#s-pdf"/></svg></span>PDF
-                  <svg className="chev" width="16" height="16"><use href="#s-chev"/></svg>
-                </button>
-                <div className={`dd ${openDD === 'pdf' ? 'show' : ''}`} id="dd-pdf">
-                  <Link className="t" href="/pdf-komprimieren">PDF komprimieren<small>Dateigröße deutlich senken</small></Link>
-                  <Link className="t" href="/pdf-zusammenfuegen">PDF zusammenfügen<small>Mehrere Dateien zu einer</small></Link>
-                  <Link className="t" href="/pdf-teilen">PDF teilen<small>Seiten extrahieren oder trennen</small></Link>
-                  <Link className="t" href="/pdf-in-jpg">PDF in JPG<small>Jede Seite als Bild speichern</small></Link>
-                  <Link className="t" href="/jpg-in-pdf">JPG in PDF<small>Bilder zu einem PDF bündeln</small></Link>
-                  <Link className="t" href="/pdf-drehen">PDF drehen<small>Seiten richtig ausrichten</small></Link>
-                  <Link className="all" href="/pdf">Alle PDF-Werkzeuge</Link>
-                </div>
-              </li>
-              <li onMouseEnter={() => handleDDEnter('misc')} onMouseLeave={handleDDLeave}>
-                <button className="nav-btn" aria-expanded={openDD === 'misc'} aria-controls="dd-misc" onClick={(e) => handleDDToggle('misc', e)}>
-                  <span className="ico i-misc"><svg width="16" height="16"><use href="#s-misc"/></svg></span>Sonstiges
-                  <svg className="chev" width="16" height="16"><use href="#s-chev"/></svg>
-                </button>
-                <div className={`dd ${openDD === 'misc' ? 'show' : ''}`} id="dd-misc">
-                  <Link className="t" href="/qr-code-erstellen">QR-Code erstellen<small>Für Links, WLAN und Text</small></Link>
-                  <Link className="t" href="/passfoto-groesse">Passfoto zuschneiden<small>Biometrisches Format 35 × 45 mm</small></Link>
-                  <Link className="t" href="/base64-konverter">Base64-Konverter<small>Text und Dateien kodieren</small></Link>
-                  <Link className="t" href="/dateigroesse-rechner">Dateigröße-Rechner<small>KB, MB und GB umrechnen</small></Link>
-                  <Link className="all" href="/sonstiges">Alle weiteren Werkzeuge</Link>
-                </div>
-              </li>
-              <li><Link className="nav-link" href="/alle-werkzeuge">Alle Werkzeuge</Link></li>
+              
+              
+              
             </ul>
           </nav>
 

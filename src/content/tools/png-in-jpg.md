@@ -70,11 +70,9 @@ subtitle: "Kostenloser PNG zu JPG Converter. Direkt im Browser, ohne Upload und 
 
   <h2>Ähnliche Werkzeuge</h2>
   <ul class="rel">
-    <li><a href="/webp-in-jpg">WebP in JPG <span aria-hidden="true">→</span></a></li>
     <li><a href="/jpg-in-png">JPG in PNG <span aria-hidden="true">→</span></a></li>
-    <li><a href="/bilder-komprimieren">Bilder komprimieren <span aria-hidden="true">→</span></a></li>
-    <li><a href="/bildgroesse-aendern">Bildgröße ändern <span aria-hidden="true">→</span></a></li>
     <li><a href="/heic-in-jpg">HEIC in JPG <span aria-hidden="true">→</span></a></li>
+    <li><a href="/webp-in-jpg">WebP in JPG <span aria-hidden="true">→</span></a></li>
   </ul>
 
 </section>

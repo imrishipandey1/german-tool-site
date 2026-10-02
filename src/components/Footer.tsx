@@ -1,5 +1,6 @@
 "use client";
 import Link from 'next/link';
+import { liveTools } from '@/lib/config/tools';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -60,42 +61,23 @@ export default function Footer() {
           <nav className="col" aria-label="Bilder-Werkzeuge">
             <h2>Bilder</h2>
             <ul>
-              <li><Link href="/bilder-komprimieren">Bilder komprimieren</Link></li>
-              <li><Link href="/bild-konvertieren">Bild konvertieren</Link></li>
-              <li><Link href="/heic-in-jpg">HEIC in JPG</Link></li>
-              <li><Link href="/bildgroesse-aendern">Bildgröße ändern</Link></li>
-              <li><Link href="/bild-zuschneiden">Bild zuschneiden</Link></li>
+              {liveTools.map(t => (
+                <li key={t.slug}><Link href={'/' + t.slug}>{t.name}</Link></li>
+              ))}
             </ul>
           </nav>
-          <nav className="col" aria-label="PDF-Werkzeuge">
-            <h2>PDF</h2>
-            <ul>
-              <li><Link href="/pdf-komprimieren">PDF komprimieren</Link></li>
-              <li><Link href="/pdf-zusammenfuegen">PDF zusammenfügen</Link></li>
-              <li><Link href="/pdf-teilen">PDF teilen</Link></li>
-              <li><Link href="/pdf-in-jpg">PDF in JPG</Link></li>
-              <li><Link href="/jpg-in-pdf">JPG in PDF</Link></li>
-            </ul>
-          </nav>
-          <nav className="col" aria-label="Weitere Werkzeuge">
-            <h2>Sonstiges</h2>
-            <ul>
-              <li><Link href="/qr-code-erstellen">QR-Code erstellen</Link></li>
-              <li><Link href="/passfoto-groesse">Passfoto zuschneiden</Link></li>
-              <li><Link href="/base64-konverter">Base64-Konverter</Link></li>
-              <li><Link href="/alle-werkzeuge">Alle Werkzeuge</Link></li>
-            </ul>
-          </nav>
+
           <nav className="col" aria-label="Rechtliches">
             <h2>Rechtliches</h2>
             <ul>
-              <li><Link href="/impressum">Impressum</Link></li>
-              <li><Link href="/datenschutz">Datenschutzerklärung</Link></li>
-              <li><Link href="/nutzungsbedingungen">Nutzungsbedingungen</Link></li>
+              <li><a href="https://german-tool-site.vercel.app/impressum">Impressum</a></li>
+              <li><a href="https://german-tool-site.vercel.app/datenschutz">Datenschutzerklärung</a></li>
+              <li><a href="https://german-tool-site.vercel.app/nutzungsbedingungen">Nutzungsbedingungen</a></li>
               <li><button type="button" onClick={handleCookieSettings}>Cookie-Einstellungen</button></li>
-              <li><Link href="/kontakt">Kontakt</Link></li>
+              <li><a href="https://german-tool-site.vercel.app/kontakt">Kontakt</a></li>
             </ul>
           </nav>
+
         </div>
 
         <div className="ft-bottom">
