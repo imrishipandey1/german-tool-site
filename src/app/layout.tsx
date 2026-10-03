@@ -16,7 +16,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "DateiWerk – Kostenlose Online-Werkzeuge für Bilder und PDF",
+  title: "ZappTool – Kostenlose Online-Werkzeuge für Bilder und PDF",
   description: "Bilder komprimieren, konvertieren und PDFs bearbeiten – direkt im Browser, ohne Upload.",
 };
 

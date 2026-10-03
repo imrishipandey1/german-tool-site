@@ -152,14 +152,14 @@ export default function Header() {
 
       <header ref={headerRef} className={`header ${scrolled ? 'scrolled' : ''}`} id="header">
         <div className="bar">
-          <Link className="logo" href="/" aria-label="DateiWerk – zur Startseite">
+          <Link className="logo" href="/" aria-label="ZappTool – zur Startseite">
             <svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true">
               <rect width="36" height="36" rx="10" fill="#1D4ED8"/>
               <path d="M11 8h10l6 6v14a1 1 0 0 1-1 1H11a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z" fill="#fff"/>
               <path d="M21 8v6h6" fill="#BFDBFE"/>
               <path d="M18.5 16.5v7m-3-3 3 3 3-3" fill="none" stroke="#047857" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
-            <span>Datei<b>Werk</b></span>
+            <span>Zapp<b>Tool</b></span>
           </Link>
 
           <nav className={`nav ${openMenu ? 'open' : ''}`} id="nav" aria-label="Hauptnavigation" ref={navRef}>
@@ -175,9 +175,20 @@ export default function Header() {
                   ))}
                 </div>
               </li>
-              
-              
-              
+
+              {liveTools.filter(t => t.category === 'pdf').length > 0 && (
+                <li onMouseEnter={() => handleDDEnter('pdf')} onMouseLeave={handleDDLeave}>
+                  <button className="nav-btn" aria-expanded={openDD === 'pdf'} aria-controls="dd-pdf" onClick={(e) => handleDDToggle('pdf', e)}>
+                    <span className="ico i-pdf"><svg width="16" height="16"><use href="#s-pdf"/></svg></span>PDF
+                    <svg className="chev" width="16" height="16"><use href="#s-chev"/></svg>
+                  </button>
+                  <div className={`dd ${openDD === 'pdf' ? 'show' : ''}`} id="dd-pdf">
+                    {liveTools.filter(t => t.category === 'pdf').map(t => (
+                      <Link key={t.slug} className="t" href={'/' + t.slug}>{t.name}<small>Kostenlos & schnell</small></Link>
+                    ))}
+                  </div>
+                </li>
+              )}
             </ul>
           </nav>
 

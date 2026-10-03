@@ -1,5 +1,5 @@
 ---
-title: "WebP in JPG umwandeln – kostenlos, ohne Upload | DateiWerk"
+title: "WebP in JPG umwandeln – kostenlos, ohne Upload | ZappTool"
 description: "WebP zu JPG umwandeln: kostenlos, ohne Upload, mit Stapelverarbeitung. Ihre WebP-Dateien bleiben im Browser auf Ihrem Gerät."
 slug: "webp-in-jpg"
 date: "2026-10-02"
@@ -77,6 +77,7 @@ subtitle: "Der kostenlose WebP zu JPG Converter für mehrere Bilder gleichzeitig
     <li><a href="/png-in-jpg">PNG in JPG <span aria-hidden="true">→</span></a></li>
     <li><a href="/jpg-in-png">JPG in PNG <span aria-hidden="true">→</span></a></li>
     <li><a href="/heic-in-jpg">HEIC in JPG <span aria-hidden="true">→</span></a></li>
+    <li><a href="/jpg-in-pdf">JPG in PDF <span aria-hidden="true">→</span></a></li>
   </ul>
   </div>
 </section>

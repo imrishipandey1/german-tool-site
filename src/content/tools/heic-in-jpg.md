@@ -1,5 +1,5 @@
 ---
-title: "HEIC in JPG umwandeln – kostenlos, ohne Upload | DateiWerk"
+title: "HEIC in JPG umwandeln – kostenlos, ohne Upload | ZappTool"
 description: "HEIC in JPG umwandeln – kostenlos und ohne Upload. iPhone-Fotos direkt im Browser konvertieren, auf Wunsch ohne Standortdaten."
 slug: "heic-in-jpg"
 date: "2026-10-02"
@@ -38,6 +38,7 @@ subtitle: "Der kostenlose HEIC-zu-JPG-Converter für Ihre iPhone-Fotos. Direkt i
     <li><a href="/png-in-jpg">PNG in JPG <span aria-hidden="true">→</span></a></li>
     <li><a href="/jpg-in-png">JPG in PNG <span aria-hidden="true">→</span></a></li>
     <li><a href="/webp-in-jpg">WebP in JPG <span aria-hidden="true">→</span></a></li>
+    <li><a href="/jpg-in-pdf">JPG in PDF <span aria-hidden="true">→</span></a></li>
   </ul>
 
 </section>

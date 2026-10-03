@@ -45,7 +45,7 @@ export default function Home() {
           <h2>Bilder-Werkzeuge</h2>
           <p className="lead">Häufige Aufgaben für Bilder direkt im Browser erledigen.</p>
 
-          <div className="cats" style={{ gridTemplateColumns: '1fr' }}>
+          <div className="cats" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
             <article className="cat">
               <header><span className="ic i-img"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="1.8" fill="currentColor"/><path d="m4 18 5-5 3 3 3-3 5 5"/></svg></span><h3>Bilder</h3></header>
               <p>Verkleinern, umwandeln und zuschneiden.</p>
@@ -57,6 +57,21 @@ export default function Home() {
                 ))}
               </ul>
             </article>
+
+            {liveTools.filter(t => t.category === 'pdf').length > 0 && (
+              <article className="cat">
+                <header><span className="ic i-pdf"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 3h7l5 5v12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v5h5M9 14h6M9 17.5h4"/></svg></span><h3>PDF</h3></header>
+                <p>Zusammenfügen, umwandeln und mehr.</p>
+                <ul style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '8px' }}>
+                  {liveTools.filter(t => t.category === 'pdf').map(t => (
+                    <li data-status="live" key={t.slug}>
+                      <Link href={'/' + t.slug}>{t.name}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            )}
+
           </div>
           <p style={{ marginTop: '24px', color: 'var(--muted)', textAlign: 'center' }}>Weitere Werkzeuge folgen in Kürze</p>
         </div>

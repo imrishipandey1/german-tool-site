@@ -195,7 +195,7 @@ export default function WebpConverter() {
     const zipBlob = await zip.generateAsync({ type: 'blob' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(zipBlob);
-    a.download = 'DateiWerk-Bilder.zip';
+    a.download = 'ZappTool-Bilder.zip';
     a.click();
     URL.revokeObjectURL(a.href);
   };

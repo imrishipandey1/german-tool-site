@@ -1,5 +1,5 @@
 ---
-title: "PNG in JPG umwandeln – kostenlos, ohne Upload | DateiWerk"
+title: "PNG in JPG umwandeln – kostenlos, ohne Upload | ZappTool"
 description: "PNG in JPG umwandeln – kostenlos, ohne Upload. Der Converter läuft direkt im Browser, Ihre Bilder bleiben auf Ihrem Gerät."
 slug: "png-in-jpg"
 date: "2026-10-02"
@@ -73,6 +73,7 @@ subtitle: "Kostenloser PNG zu JPG Converter. Direkt im Browser, ohne Upload und 
     <li><a href="/jpg-in-png">JPG in PNG <span aria-hidden="true">→</span></a></li>
     <li><a href="/heic-in-jpg">HEIC in JPG <span aria-hidden="true">→</span></a></li>
     <li><a href="/webp-in-jpg">WebP in JPG <span aria-hidden="true">→</span></a></li>
+    <li><a href="/jpg-in-pdf">JPG in PDF <span aria-hidden="true">→</span></a></li>
   </ul>
 
 </section>

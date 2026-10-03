@@ -42,14 +42,14 @@ export default function Footer() {
       <footer className="footer">
         <div className="ft-main">
           <div className="brand">
-            <Link className="logo" href="/" aria-label="DateiWerk – zur Startseite">
+            <Link className="logo" href="/" aria-label="ZappTool – zur Startseite">
               <svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true">
                 <rect width="36" height="36" rx="10" fill="#1D4ED8"/>
                 <path d="M11 8h10l6 6v14a1 1 0 0 1-1 1H11a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z" fill="#fff"/>
                 <path d="M21 8v6h6" fill="#BFDBFE"/>
                 <path d="M18.5 16.5v7m-3-3 3 3 3-3" fill="none" stroke="#047857" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-              <span>Datei<b>Werk</b></span>
+              <span>Zapp<b>Tool</b></span>
             </Link>
             <p>Kostenlose Werkzeuge für Bilder und PDFs. Schnell, sicher und direkt im Browser.</p>
             <div className="loc">
@@ -67,6 +67,17 @@ export default function Footer() {
             </ul>
           </nav>
 
+          {liveTools.filter(t => t.category === 'pdf').length > 0 && (
+            <nav className="col" aria-label="PDF-Werkzeuge">
+              <h2>PDF</h2>
+              <ul>
+                {liveTools.filter(t => t.category === 'pdf').map(t => (
+                  <li key={t.slug}><Link href={'/' + t.slug}>{t.name}</Link></li>
+                ))}
+              </ul>
+            </nav>
+          )}
+
           <nav className="col" aria-label="Rechtliches">
             <h2>Rechtliches</h2>
             <ul>
@@ -82,7 +93,7 @@ export default function Footer() {
 
         <div className="ft-bottom">
           <div>
-            <span>© <span>{currentYear}</span> DateiWerk. Alle Rechte vorbehalten.</span>
+            <span>© <span>{currentYear}</span> ZappTool. Alle Rechte vorbehalten.</span>
             <span className="r">
               <span className="ok"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>Keine Dateien auf unseren Servern</span>
               <button className="top" type="button" onClick={handleScrollTop}>

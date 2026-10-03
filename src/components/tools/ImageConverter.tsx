@@ -209,7 +209,7 @@ export default function ImageConverter() {
         const zipBlob = await zip.generateAsync({ type: 'blob' });
         const a = document.createElement('a');
         a.href = URL.createObjectURL(zipBlob);
-        a.download = 'DateiWerk-Bilder.zip';
+        a.download = 'ZappTool-Bilder.zip';
         a.click();
         
         setTimeout(() => URL.revokeObjectURL(a.href), 5000);
