@@ -217,7 +217,7 @@ export default function JpgToPdfConverter() {
         
         const imgData = cvs.toDataURL('image/jpeg', 0.95);
         
-        let format = opts.pageSize;
+        let format: string | [number, number] = opts.pageSize;
         let orientation = opts.orientation;
         
         if (format === 'fit') {
