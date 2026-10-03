@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect, useCallback, DragEvent, useLayoutEffect } from 'react';
+import jsPDF from 'jspdf';
 
 interface Item {
   id: number;
@@ -181,32 +182,115 @@ export default function JpgToPdfConverter() {
     return () => document.removeEventListener('paste', handlePaste);
   }, []);
 
-  const demoPdf = (pages: any[]) => {
-    return new Promise<Blob>((resolve) => {
-      setTimeout(() => {
-        const s = pages.reduce((a, p) => a + p.file.size, 0);
-        resolve(new Blob([new Uint8Array(Math.round(s * 0.98))], { type: 'application/pdf' }));
-      }, 900);
-    });
-  };
-
-  const engine = (pages: any[], options: any) => {
-    const w = window as any;
-    if (w.ZappTool && w.ZappTool.createPdf) {
-      return w.ZappTool.createPdf(pages, options);
-    }
-    return demoPdf(pages);
-  };
-
   const createPdf = async () => {
     if (busy || !items.length) return;
     setBusy(true);
     clearResult();
     
     try {
-      const blob = await engine(items.map(i => ({ file: i.file, rotation: i.rot })), opts);
+      // Initialize first document page with arbitrary size to be replaced
+      const doc = new jsPDF({ unit: 'mm' });
+      doc.deletePage(1);
+
+      for (let i = 0; i < items.length; i++) {
+        const item = items[i];
+        
+        // Load image to get dimensions (considering rotation)
+        const img = new Image();
+        img.src = item.url;
+        await new Promise(r => img.onload = r);
+        
+        const isRotated = item.rot === 90 || item.rot === 270;
+        const imgW = isRotated ? img.naturalHeight : img.naturalWidth;
+        const imgH = isRotated ? img.naturalWidth : img.naturalHeight;
+        
+        // Prepare canvas to draw rotated image
+        const cvs = document.createElement('canvas');
+        cvs.width = imgW;
+        cvs.height = imgH;
+        const ctx = cvs.getContext('2d');
+        if (ctx) {
+          ctx.translate(imgW/2, imgH/2);
+          ctx.rotate(item.rot * Math.PI / 180);
+          ctx.drawImage(img, -img.naturalWidth/2, -img.naturalHeight/2);
+        }
+        
+        const imgData = cvs.toDataURL('image/jpeg', 0.95);
+        
+        let format = opts.pageSize;
+        let orientation = opts.orientation;
+        
+        if (format === 'fit') {
+          // jsPDF takes points or mm. Let's use mm for standard, or just pass [w, h]
+          // If we use 'px', jsPDF can handle arrays of custom sizes. 
+          // Let's create custom page size in pt or mm.
+          format = [imgW, imgH];
+          orientation = imgW > imgH ? 'l' : 'p';
+        } else {
+          if (orientation === 'auto') {
+            orientation = imgW > imgH ? 'l' : 'p';
+          }
+        }
+        
+        doc.addPage(format, orientation === 'l' ? 'l' : 'p');
+        
+        const pageW = doc.internal.pageSize.getWidth();
+        const pageH = doc.internal.pageSize.getHeight();
+        
+        let m = 0;
+        if (opts.pageSize !== 'fit') {
+          if (opts.margin === 'small') m = 10;
+          if (opts.margin === 'large') m = 20;
+        }
+        
+        const availW = pageW - (m * 2);
+        const availH = pageH - (m * 2);
+        
+        let finalW = availW;
+        let finalH = availH;
+        let x = m;
+        let y = m;
+        
+        if (opts.pageSize !== 'fit') {
+           const imgRatio = imgW / imgH;
+           const pageRatio = availW / availH;
+           
+           if (opts.fit === 'contain') {
+             if (imgRatio > pageRatio) {
+               finalW = availW;
+               finalH = availW / imgRatio;
+               y = m + (availH - finalH) / 2;
+             } else {
+               finalH = availH;
+               finalW = availH * imgRatio;
+               x = m + (availW - finalW) / 2;
+             }
+           } else {
+             // cover
+             if (imgRatio > pageRatio) {
+               finalH = availH;
+               finalW = availH * imgRatio;
+               x = m + (availW - finalW) / 2;
+             } else {
+               finalW = availW;
+               finalH = availW / imgRatio;
+               y = m + (availH - finalH) / 2;
+             }
+           }
+        } else {
+          finalW = pageW;
+          finalH = pageH;
+          x = 0;
+          y = 0;
+        }
+        
+        doc.addImage(imgData, 'JPEG', x, y, finalW, finalH);
+      }
+      
+      const blob = doc.output('blob');
       setResult({ size: blob.size, url: URL.createObjectURL(blob) });
     } catch (e) {
+      console.error(e);
       setMsg('Das PDF konnte nicht erstellt werden. Bitte versuchen Sie es erneut.');
     }
     setBusy(false);
