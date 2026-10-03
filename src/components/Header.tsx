@@ -153,12 +153,7 @@ export default function Header() {
       <header ref={headerRef} className={`header ${scrolled ? 'scrolled' : ''}`} id="header">
         <div className="bar">
           <Link className="logo" href="/" aria-label="ZappTool – zur Startseite">
-            <svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true">
-              <rect width="36" height="36" rx="10" fill="#1D4ED8"/>
-              <path d="M11 8h10l6 6v14a1 1 0 0 1-1 1H11a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z" fill="#fff"/>
-              <path d="M21 8v6h6" fill="#BFDBFE"/>
-              <path d="M18.5 16.5v7m-3-3 3 3 3-3" fill="none" stroke="#047857" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+            <img src="/log.png" alt="ZappTool Logo" width="36" height="36" style={{ borderRadius: "10px" }} />
             <span>Zapp<b>Tool</b></span>
           </Link>
 
