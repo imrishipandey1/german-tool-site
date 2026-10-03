@@ -342,7 +342,6 @@ export default function JpgConverter() {
               <label><input type="radio" name="background" value="white" checked={background === 'white'} onChange={() => { setBackground('white'); resetResults(); }} /> Weiß</label>
               <label><input type="radio" name="background" value="transparent" checked={background === 'transparent'} onChange={() => { setBackground('transparent'); resetResults(); }} /> Transparent</label>
             </div>
-            <p className="setting-description">JPG enthält keine Transparenz. Mit „Transparent“ kann der Hintergrund des PNGs transparent bleiben.</p>
           </div>
 
           <div className="setting">
