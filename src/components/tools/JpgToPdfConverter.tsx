@@ -240,7 +240,7 @@ export default function JpgToPdfConverter() {
     land = r > 1;
   } else {
     const base = opts.pageSize === 'a4' ? 210 / 297 : 8.5 / 11;
-    land = opts.orientation === 'landscape' || (opts.orientation === 'auto' && fe && fe.w > fe.h);
+    land = opts.orientation === 'landscape' || (opts.orientation === 'auto' && fe !== null && fe.w > fe.h);
     r = land ? 1 / base : base;
   }
   
