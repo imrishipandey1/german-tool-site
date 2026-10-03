@@ -19,6 +19,9 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://zapptool.de/"),
   title: "Bilder umwandeln online – JPG, PNG, HEIC, PDF | Zapp Tool",
   description: "Bilder kostenlos online umwandeln: JPG, PNG, HEIC und WebP konvertieren oder JPG in PDF. Direkt im Browser, ohne Upload und ohne Anmeldung.",
+  verification: {
+    google: "tnd_crD-VSU6I5PVcp_D48eBIPR4TNq4DQTubylokc8",
+  },
 };
 
 export default function RootLayout({
