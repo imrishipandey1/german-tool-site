@@ -12,16 +12,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const staticPages = [
-    '',
-    '/impressum',
-    '/datenschutz',
-    '/nutzungsbedingungen',
-    '/kontakt'
+    ''
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
-    changeFrequency: route === '' ? 'weekly' as const : 'monthly' as const,
-    priority: route === '' ? 1.0 : 0.5,
+    changeFrequency: 'weekly' as const,
+    priority: 1.0,
   }));
 
   return [...staticPages, ...toolsSitemap];
