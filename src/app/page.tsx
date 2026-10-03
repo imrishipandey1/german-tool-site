@@ -50,7 +50,7 @@ export default function Home() {
               <header><span className="ic i-img"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="1.8" fill="currentColor"/><path d="m4 18 5-5 3 3 3-3 5 5"/></svg></span><h3>Bilder</h3></header>
               <p>Verkleinern, umwandeln und zuschneiden.</p>
               <ul style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '8px' }}>
-                {liveTools.map(t => (
+                {liveTools.filter(t => t.category === 'bilder').map(t => (
                   <li data-status="live" key={t.slug}>
                     <Link href={'/' + t.slug}>{t.name}</Link>
                   </li>
@@ -73,8 +73,7 @@ export default function Home() {
             )}
 
           </div>
-          <p style={{ marginTop: '24px', color: 'var(--muted)', textAlign: 'center' }}>Weitere Werkzeuge folgen in Kürze</p>
-        </div>
+                  </div>
       </section>
 
       {/* Datenschutz / So funktioniert es */}
@@ -108,16 +107,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Abschluss */}
-      <section className="end">
-        <div className="wrap">
-          <div className="box">
-            <h2>Bereit, wenn Sie es sind</h2>
-            <p>Schauen Sie bald wieder vorbei. Die ersten Werkzeuge für Bilder und PDFs kommen als Nächstes.</p>
-            <a className="btn p" href="#werkzeuge">Zur Übersicht</a>
-          </div>
-        </div>
-      </section>
-    </>
+          </>
   );
 }

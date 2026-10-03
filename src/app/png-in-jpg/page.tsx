@@ -23,7 +23,6 @@ export default async function PngInJpgPage() {
       <nav className="crumbs" aria-label="Brotkrumen">
         <ol>
           <li><Link href="/">Startseite</Link></li>
-          <li><Link href="/bilder">Bilder</Link></li>
           <li aria-current="page">PNG in JPG</li>
         </ol>
       </nav>

@@ -16,8 +16,9 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "ZappTool – Kostenlose Online-Werkzeuge für Bilder und PDF",
-  description: "Bilder komprimieren, konvertieren und PDFs bearbeiten – direkt im Browser, ohne Upload.",
+  metadataBase: new URL("https://zapptool.de/"),
+  title: "Bilder umwandeln online – JPG, PNG, HEIC, PDF | Zapp Tool",
+  description: "Bilder kostenlos online umwandeln: JPG, PNG, HEIC und WebP konvertieren oder JPG in PDF. Direkt im Browser, ohne Upload und ohne Anmeldung.",
 };
 
 export default function RootLayout({

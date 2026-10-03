@@ -39,11 +39,6 @@ subtitle: "Konvertieren Sie JPG-Bilder direkt im Browser in PNG-Dateien. Kostenl
       <p>Wählen Sie zwischen <strong>PNG</strong> für vollständige Farbdarstellung und <strong>PNG-8</strong> für kleinere Dateien bei Bildern mit wenigen Farben.</p>
     </article>
     <article class="info-card">
-      <div class="icon"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/></svg></div>
-      <h3>Hintergrund</h3>
-      <p>Legen Sie fest, ob der PNG-Hintergrund <strong>weiß oder transparent</strong> ausgegeben werden soll.</p>
-    </article>
-    <article class="info-card">
       <div class="icon"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg></div>
       <h3>Größe anpassen</h3>
       <p>Behalten Sie die Originalgröße bei oder wählen Sie eine maximale Breite. Das Seitenverhältnis bleibt erhalten und kleinere Bilder werden nicht vergrößert.</p>
@@ -69,6 +64,7 @@ subtitle: "Konvertieren Sie JPG-Bilder direkt im Browser in PNG-Dateien. Kostenl
 <section class="content narrow">
   <h2>Häufige Fragen zur JPG-zu-PNG-Konvertierung</h2>
   <div class="faq">
+    <details><summary>Warum wird mein PNG viel größer als das JPG?</summary><p>PNG komprimiert verlustfrei und speichert jedes Pixel exakt, während JPG Details löscht, um die Datei für Fotos extrem zu verkleinern.</p></details>
     <details><summary>Wie kann ich JPG in PNG umwandeln?</summary><p>Wählen Sie Ihre JPG-Dateien aus oder ziehen Sie sie in das Konvertierungsfeld. Danach können Sie die gewünschten Optionen einstellen und auf „In PNG umwandeln“ klicken.</p></details>
     <details><summary>Wird mein JPG-Bild beim Konvertieren verbessert?</summary><p>Nein. Die Konvertierung kann bereits verlorene Bildinformationen aus einer JPG-Datei nicht zurückholen. Das erzeugte PNG wird jedoch mit verlustfreier PNG-Kompression gespeichert.</p></details>
     <details><summary>Kann PNG Transparenz speichern?</summary><p>Ja. PNG unterstützt Transparenz über einen Alphakanal. Dadurch können transparente Bereiche gespeichert werden, während JPG keine Transparenz unterstützt.</p></details>

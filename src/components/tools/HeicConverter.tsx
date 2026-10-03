@@ -204,7 +204,7 @@ export default function HeicConverter() {
         >
           <span className="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2M12 14V8m-2.5 2.5L12 8l2.5 2.5"/></svg></span>
           <strong>HEIC-Fotos hierher ziehen</strong>
-          <small>Dateien der Endung .heic oder .heif, mehrere gleichzeitig möglich</small>
+          <small>Dateien mit der Endung .heic oder .heif, mehrere gleichzeitig möglich</small>
           <span className="btn p">{items.length > 0 ? 'Weitere Fotos hinzufügen' : 'Fotos auswählen'}</span>
           <input className="sr" ref={fileInputRef} type="file" accept=".heic,.heif,image/heic,image/heif" multiple onChange={(e) => { addFiles(e.target.files); e.target.value = ''; }} />
         </label>

@@ -63,7 +63,7 @@ subtitle: "Der kostenlose WebP zu JPG Converter für mehrere Bilder gleichzeitig
     <h2>Häufige Fragen zum WebP-zu-JPG-Converter</h2>
     <div class="faq">
       <details><summary>Wie wandle ich eine WebP-Datei in JPG um?</summary><p>Ziehen Sie Ihre WebP-Dateien in das Feld, passen Sie bei Bedarf Qualität und Größe an und klicken Sie auf „In JPG umwandeln“. Danach laden Sie die Dateien einzeln oder als ZIP herunter.</p></details>
-      <details><summary>Was ist ein WebP to JPG Converter?</summary><p>Ein WebP to JPG Converter wandelt Bilder im WebP-Format in das gängige JPG-Format um. Bei diesem Werkzeug passiert das direkt in Ihrem Browser.</p></details>
+      <details><summary>Was ist ein WebP-zu-JPG-Konverter?</summary><p>Ein WebP-zu-JPG-Konverter wandelt Bilder im WebP-Format in das gängige JPG-Format um. Bei diesem Werkzeug passiert das direkt in Ihrem Browser.</p></details>
       <details><summary>Werden meine WebP-Dateien hochgeladen?</summary><p>Nein. Die Umwandlung läuft auf Ihrem Gerät, Ihre Dateien verlassen es nicht.</p></details>
       <details><summary>Geht bei der Umwandlung Qualität verloren?</summary><p>JPG komprimiert verlustbehaftet. Bei hoher Qualität sind Unterschiede kaum sichtbar. Je höher der Wert, desto größer die Datei.</p></details>
       <details><summary>Was passiert mit transparenten WebP-Bildern?</summary><p>JPG unterstützt keine Transparenz. Transparente Bereiche werden mit der Hintergrundfarbe gefüllt, die Sie in den Einstellungen wählen.</p></details>

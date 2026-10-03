@@ -25,7 +25,6 @@ export default async function WebpInJpgPage() {
           <nav className="crumbs" aria-label="Brotkrumen">
             <ol>
               <li><Link href="/">Startseite</Link></li>
-              <li><Link href="/bilder">Bilder</Link></li>
               <li aria-current="page">WebP in JPG</li>
             </ol>
           </nav>

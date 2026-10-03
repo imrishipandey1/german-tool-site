@@ -17,7 +17,6 @@ export default function JpgConverter() {
 
   // Settings
   const [pngType, setPngType] = useState('png'); // 'png' | 'png8'
-  const [background, setBackground] = useState('white'); // 'white' | 'transparent'
   const [sizeMode, setSizeMode] = useState('');
   const [customWidth, setCustomWidth] = useState('');
   const [suffix, setSuffix] = useState('');
@@ -334,14 +333,6 @@ export default function JpgConverter() {
               </div>
             </div>
             <p className="setting-description">PNG verwendet eine verlustfreie Kompression. PNG-8 kann die Dateigröße bei Bildern mit wenigen Farben reduzieren.</p>
-          </div>
-
-          <div className="setting">
-            <h3>Hintergrund</h3>
-            <div className="transparency">
-              <label><input type="radio" name="background" value="white" checked={background === 'white'} onChange={() => { setBackground('white'); resetResults(); }} /> Weiß</label>
-              <label><input type="radio" name="background" value="transparent" checked={background === 'transparent'} onChange={() => { setBackground('transparent'); resetResults(); }} /> Transparent</label>
-            </div>
           </div>
 
           <div className="setting">

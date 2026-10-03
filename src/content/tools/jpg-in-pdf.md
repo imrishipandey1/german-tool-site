@@ -46,7 +46,7 @@ subtitle: "Fassen Sie ein oder mehrere Bilder zu einer PDF-Datei zusammen. Reihe
   <h2>Tipps für ein sauberes Ergebnis</h2>
   <ul class="list">
     <li><b>Reihenfolge prüfen:</b> Die Zahl oben links an jedem Bild ist die spätere Seitenzahl.</li>
-    <li><b>Schief liegende Fotos:</b> Manchmal erscheint ein Handyfoto im falschen Winkel, weil Programme die Ausrichtung der Kamera unterschiedlich auslesen. Mit der Drehen-Schaltfläche stellen Sie es vor dem Erstellen richtig.</li>
+    <li><b>Falsch gedrehte Fotos:</b> Manchmal erscheint ein Handyfoto im falschen Winkel, weil Programme die Ausrichtung der Kamera unterschiedlich auslesen. Mit der Drehen-Schaltfläche stellen Sie es vor dem Erstellen richtig.</li>
     <li><b>Auflösung:</b> Für einen scharfen Ausdruck auf A4 sollte ein Bild etwa 2480 × 3508 Pixel haben, das entspricht 300 dpi. Kleinere Bilder wirken auf Papier schnell unscharf.</li>
     <li><b>Dateigröße:</b> Mit „Original“ werden Ihre Bilder unverändert übernommen. Das PDF ist dann ungefähr so groß wie alle Bilder zusammen. Erlaubt ein Portal nur wenige Megabyte, wählen Sie „Ausgewogen“ oder „Klein“.</li>
   </ul>

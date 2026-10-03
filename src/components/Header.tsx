@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 
 import { liveTools } from '@/lib/config/tools';
 
-const TOOLS = liveTools.map(t => ({ t: t.name, h: '/' + t.slug, g: t.category === 'bilder' ? 'Bilder' : t.category }));
+const TOOLS = liveTools.map(t => ({ t: t.name, h: '/' + t.slug, g: t.category === 'bilder' ? 'Bilder' : (t.category === 'pdf' ? 'PDF' : t.category) }));
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -170,7 +170,7 @@ export default function Header() {
                   <svg className="chev" width="16" height="16"><use href="#s-chev"/></svg>
                 </button>
                 <div className={`dd ${openDD === 'bilder' ? 'show' : ''}`} id="dd-bilder">
-                  {liveTools.map(t => (
+                  {liveTools.filter(t => t.category === 'bilder').map(t => (
                     <Link key={t.slug} className="t" href={'/' + t.slug}>{t.name}<small>Kostenlos & schnell</small></Link>
                   ))}
                 </div>

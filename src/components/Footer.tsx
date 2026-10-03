@@ -12,10 +12,6 @@ export default function Footer() {
     });
   };
 
-  const handleCookieSettings = () => {
-    document.dispatchEvent(new CustomEvent('open-cookie-settings'));
-  };
-
   return (
     <>
       <section className="trust" aria-label="Unsere Datenschutz-Versprechen">
@@ -61,7 +57,7 @@ export default function Footer() {
           <nav className="col" aria-label="Bilder-Werkzeuge">
             <h2>Bilder</h2>
             <ul>
-              {liveTools.map(t => (
+              {liveTools.filter(t => t.category === 'bilder').map(t => (
                 <li key={t.slug}><Link href={'/' + t.slug}>{t.name}</Link></li>
               ))}
             </ul>
@@ -81,11 +77,10 @@ export default function Footer() {
           <nav className="col" aria-label="Rechtliches">
             <h2>Rechtliches</h2>
             <ul>
-              <li><a href="https://german-tool-site.vercel.app/impressum">Impressum</a></li>
-              <li><a href="https://german-tool-site.vercel.app/datenschutz">Datenschutzerklärung</a></li>
-              <li><a href="https://german-tool-site.vercel.app/nutzungsbedingungen">Nutzungsbedingungen</a></li>
-              <li><button type="button" onClick={handleCookieSettings}>Cookie-Einstellungen</button></li>
-              <li><a href="https://german-tool-site.vercel.app/kontakt">Kontakt</a></li>
+              <li><a href="/impressum">Impressum</a></li>
+              <li><a href="/datenschutz">Datenschutzerklärung</a></li>
+              <li><a href="/nutzungsbedingungen">Nutzungsbedingungen</a></li>
+              <li><a href="/kontakt">Kontakt</a></li>
             </ul>
           </nav>
 
