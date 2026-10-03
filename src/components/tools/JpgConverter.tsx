@@ -116,10 +116,6 @@ export default function JpgConverter() {
         const ctx = cvs.getContext('2d');
         if (!ctx) return reject('No context');
 
-        if (background === 'white') {
-          ctx.fillStyle = '#ffffff';
-          ctx.fillRect(0, 0, w, h);
-        }
         
         ctx.drawImage(img, 0, 0, w, h);
         
@@ -378,7 +374,6 @@ export default function JpgConverter() {
 
           <button className="reset" type="button" onClick={() => {
             setPngType('png');
-            setBackground('white');
             setSizeMode('');
             setCustomWidth('');
             setSuffix('');
