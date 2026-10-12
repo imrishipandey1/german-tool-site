@@ -78,6 +78,7 @@ subtitle: "Der kostenlose WebP zu JPG Converter für mehrere Bilder gleichzeitig
     <li><a href="/jpg-in-png">JPG in PNG <span aria-hidden="true">→</span></a></li>
     <li><a href="/heic-in-jpg">HEIC in JPG <span aria-hidden="true">→</span></a></li>
     <li><a href="/jpg-in-pdf">JPG in PDF <span aria-hidden="true">→</span></a></li>
+    <li><a href="/png-in-pdf">PNG in PDF <span aria-hidden="true">→</span></a></li>
   </ul>
   </div>
 </section>

@@ -81,5 +81,6 @@ subtitle: "Konvertieren Sie JPG-Bilder direkt im Browser in PNG-Dateien. Kostenl
     <li><a href="/heic-in-jpg">HEIC in JPG <span aria-hidden="true">→</span></a></li>
     <li><a href="/webp-in-jpg">WebP in JPG <span aria-hidden="true">→</span></a></li>
     <li><a href="/jpg-in-pdf">JPG in PDF <span aria-hidden="true">→</span></a></li>
+    <li><a href="/png-in-pdf">PNG in PDF <span aria-hidden="true">→</span></a></li>
   </ul>
 </section>

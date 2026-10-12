@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useRef, useEffect, useCallback, DragEvent, useLayoutEffect } from 'react';
-import jsPDF from 'jspdf';
 
 interface Item {
   id: number;
@@ -189,6 +188,7 @@ export default function JpgToPdfConverter() {
     
     try {
       // Initialize first document page with arbitrary size to be replaced
+      const { jsPDF } = await import('jspdf');
       const doc = new jsPDF({ unit: 'mm' });
       doc.deletePage(1);
 
@@ -361,7 +361,7 @@ export default function JpgToPdfConverter() {
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M12 15V9m-3 3 3-3 3 3"/></svg>
               </span>
               <strong>JPG-Bilder hierher ziehen</strong>
-              <small>oder auswählen · mehrere Bilder möglich · Einfügen mit Strg + V</small>
+              <small>oder auswählen · mehrere Bilder möglich · Einfügen mit Strg + V / Cmd + V</small>
               <span className="btn p">Bilder auswählen</span>
               <input className="sr" type="file" accept=".jpg,.jpeg,image/jpeg" multiple onChange={onFilesChange} />
             </label>
@@ -423,7 +423,7 @@ export default function JpgToPdfConverter() {
         <div className="page">
           <div className="prev">
             <div className="stage">
-              <div className="sheet" style={{ '--r': r, padding: pad } as any}>
+              <div className="sheet" style={{ '--r': r, padding: pad } as React.CSSProperties}>
                 <div className="pimg" ref={pimgRef}>
                   {f ? (
                     <img 

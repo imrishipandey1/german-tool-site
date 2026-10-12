@@ -39,6 +39,7 @@ subtitle: "Der kostenlose HEIC-zu-JPG-Converter für Ihre iPhone-Fotos. Direkt i
     <li><a href="/jpg-in-png">JPG in PNG <span aria-hidden="true">→</span></a></li>
     <li><a href="/webp-in-jpg">WebP in JPG <span aria-hidden="true">→</span></a></li>
     <li><a href="/jpg-in-pdf">JPG in PDF <span aria-hidden="true">→</span></a></li>
+    <li><a href="/png-in-pdf">PNG in PDF <span aria-hidden="true">→</span></a></li>
   </ul>
 
 </section>

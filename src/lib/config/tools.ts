@@ -4,6 +4,7 @@ export const tools = [
   { slug: "heic-in-jpg", name: "HEIC in JPG", category: "bilder", status: "live" },
   { slug: "webp-in-jpg", name: "WebP in JPG", category: "bilder", status: "live" },
   { slug: "jpg-in-pdf", name: "JPG in PDF", category: "pdf", status: "live" },
+  { slug: "png-in-pdf", name: "PNG in PDF", category: "pdf", status: "live" },
 ];
 
 export const liveTools = tools.filter(t => t.status === "live");
